@@ -1,0 +1,8 @@
+
+_MIC_FEED_BACK - Microphone Feedback
+_DEV_MICREC_SELECTOR_ADD - Select microphone from some list
+_DEV_MICREC_MIXER_ADD - Microphone recording mixer
+
+Used:
+_FREQ_SPK_RANGE_ - set range 8...48 Khz, if not set, then selected only 44,1Khz
+_TAS1020_ - Old revision of IC, if not set, then TAS1020A - is used (There is no difference between TAS1020A and TAS1020B).
