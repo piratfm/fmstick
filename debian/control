@@ -1,0 +1,15 @@
+Source: fmstick
+Section: sound
+Priority: optional
+Maintainer: Serge Gw <piratfm@gmail.com>
+Build-Depends: debhelper (>= 7), libqt4-dev, qt4-dev-tools, qt4-qmake, cmake, libusb-1.0-0-dev
+Standards-Version: 3.8.3
+Homepage: http://tipok.org.ua/node/35
+
+Package: fmstick
+Architecture: any
+Depends: libqt4-core, libqt4-gui, libqt4-network, libgcc1, libusb-1.0-0
+Description: FmStick Control Application
+ This package contains application that controls
+ FmStick digital FM transmitter, the hardware
+ based on TAS1020B and SI4711 chips.

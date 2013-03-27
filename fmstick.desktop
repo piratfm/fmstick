@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=FmStick
+GenericName=FmStick Controller
+GenericName[ru]=FmStick Контроллер Передатчика
+GenericName[uk]=FmStick Контроллер Передавача
+Comment=Control Your FM-Transmitter
+Comment[ru]=Программа управления ЧМ-передатчиком
+Comment[uk]=Програма управління ЧМ-передавачем
+Exec=fmstick
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/64x64/apps/fmstick.png
+Categories=Qt;KDE;AudioVideo;

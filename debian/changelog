@@ -1,0 +1,6 @@
+fmstick (1.1-1) jaunty; urgency=low
+
+  * Initial release
+  * add qtsingleapplication into sources
+
+ -- Serge Gw (developer) <piratfm@gmail.com>  Mon, 21 Nov 2011 19:16:34 +0200

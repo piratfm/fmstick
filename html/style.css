@@ -1,0 +1,127 @@
+/* Menu 3 starts here */
+#menu3 {
+    display: block;
+}
+
+
+#menu3 ul {
+    width: 100%;
+    float: left;
+    margin: 0 0 1em 0;
+    padding: 0;
+    list-style: none;
+}
+#menu3 li {
+    float: left;
+    border: 1px solid #ccc;
+}
+
+#menu3 a {
+    padding: 4px;
+    color: #483000;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    width: 100px;
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+#menu3 a:link, #menu3 a:visited
+{
+    color: #483000;
+    text-decoration: none;
+}
+
+#menu3 a:hover
+{
+    border-bottom: 4px solid #901818;
+    color: #000;
+}
+
+#menu3 li a.current
+{
+    border-bottom: 4px solid #901818;
+    background: #F0F0F0;
+    color: #000;
+}
+/* Menu 3 ends here */
+
+#content {
+    min-width: 660px;
+    border: 1px dotted #CCCCCC;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.logo_style {
+    vertical-align: middle;
+}
+
+.logo_style img {
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+}
+
+.logo_style h1, .logo_style h2 {
+    padding-left: 10px;
+    display: inline-block;
+}
+
+#base {
+    padding-left: 10px;
+}
+
+.container {
+    display: table;
+    border-collapse:collapse;
+}
+.row {
+    display: table-row;
+}
+.prop, .val, .submit, .tooltip {
+    display: table-cell;
+    border-top:1px dotted #AAAAAA;
+}
+
+.prop, .val {
+    width: 180px;
+    max-width: 180px;
+    border-right:1px dotted #AAAAAA;
+}
+
+.submit {
+    width: 50px;
+    border-right:1px dotted #AAAAAA;
+}
+
+.tooltip {
+    width: 246px;
+}
+
+.prop p, .val p, .submit p, .tooltip p {
+    margin: 2px 2px;
+}
+
+.img_grayscale {
+    display: block;
+    filter: url(/html/grayscale.svg#grayscale); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome & Safari 6+ */
+    width: 16px;
+    height: 16px;
+}
+
+.img_norm {
+    display: block;
+    width: 16px;
+    height: 16px;
+}
+
+.filter_grayscale {
+    display: inline-block;
+    filter: url(/html/grayscale.svg#grayscale); /* Firefox 3.5+ */
+    filter: gray; /* IE6-9 */
+    -webkit-filter: grayscale(1); /* Google Chrome & Safari 6+ */
+}

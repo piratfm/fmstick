@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF=8">
+    <title>FmStick App</title>
+    <link rel="stylesheet" type="text/css" href="/html/style.css" />
+    <script type="text/javascript" src="/html/index.js"></script>
+</head>
+
+<body>
+
+<div class="logo_style">
+    <img src="/images/fmstick.png" />
+    <h1>FmStick Control Web-UI</h1>
+</div>
+
+<div id="base">
+<div id="menu3">
+<ul>
+<li><a href="/" id="menu_0"><img src="/images/fmstick.png" height=16 width=16> Main</a></li>
+<li><a href="/audio" id="menu_1"><img src="/images/Music_Note.png" height=16 width=16> Audio</a></li>
+<li><a href="/tx" id="menu_2"><img src="/images/1318446568_transmit_blue.png" height=16 width=16> Tansmitter</a></li>
+<li><a href="/rds" id="menu_3"><img src="/images/rds-logo.png" height=16 width=16> RDS</a></li>
+<li><a href="/hw" id="menu_4"><img src="/images/fw.png" height=16 width=16> Hardware</a></li>
+<li><a href="/sw" id="menu_5"><img src="/images/Administrative Tools-64 (1).png" height=16 width=16> Software</a></li>
+</ul>
+</div>
+
+<script type="text/javascript">
+    var pathname = window.location.pathname;  //gives me /sub/1/train/yonks/459087
+
+    if(pathname.lastIndexOf('/audio', 0) === 0) {
+        document.getElementById("menu_1").className = "current";
+    } else
+    if(pathname.lastIndexOf('/tx', 0) === 0) {
+        document.getElementById("menu_2").className = "current";
+    } else
+    if(pathname.lastIndexOf('/rds', 0) === 0) {
+        document.getElementById("menu_3").className = "current";
+    } else
+    if(pathname.lastIndexOf('/hw', 0) === 0) {
+        document.getElementById("menu_4").className = "current";
+    } else
+    if(pathname.lastIndexOf('/sw', 0) === 0) {
+        document.getElementById("menu_5").className = "current";
+    } else {
+        document.getElementById("menu_0").className = "current";
+    }
+
+</script>
+
+<div id="content">
