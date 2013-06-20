@@ -356,7 +356,7 @@ bit si47xxSetAudio(bit toEnable)
 	} else {
 		si47xx_set_property(DIGITAL_INPUT_SAMPLE_RATE, toEnable ? 44100 : 0);
 		wait_ms(10);
-		si47xx_set_property(DIGITAL_INPUT_FORMAT, 0);
+		si47xx_set_property(DIGITAL_INPUT_FORMAT, 0x0008);
 	}
 	wait_ms(10);
 	return TRUE;
