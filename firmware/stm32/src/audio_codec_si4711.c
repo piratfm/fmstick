@@ -17,7 +17,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include <stddef.h>
 #include "audio_codec_si4711.h"
-#include "stm32_eval.h"
+#include "stm32_hardware.h"
 #include "hw_config.h"
 
 #include "si47xx_commanddefs.h"

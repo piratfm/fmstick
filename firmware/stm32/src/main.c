@@ -19,7 +19,7 @@
 #include "usb_desc.h"
 #include "hw_config.h"
 #include "usb_prop.h"
-#include "stm32_eval.h"
+#include "stm32_hardware.h"
 
 
 /* Private typedef -----------------------------------------------------------*/

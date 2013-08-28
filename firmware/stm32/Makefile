@@ -1,28 +1,17 @@
 
 # Sources
-SRCS = main.c stm32f4xx_it.c system_stm32f4xx.c newlib_stubs.c 
+SRCS = main.c stm32f10x_it.c system_stm32f10x.c newlib_stubs.c core_cm3.c
 
+# USB specific files
+SRCS += usb_desc.c  usb_endp.c  usb_istr.c  usb_prop.c  usb_pwr.c
 
-# Discovery board specific files
-SRCS += stm32f4_discovery.c stm32f4_discovery_audio_codec.c stm32f4_discovery_audio_mic.c
+# Board specific files
+SRCS += audio_codec_si4711.c hw_config.c I2CRoutines.c stm32_hardware.c
 
 # Project name
 
-PROJ_NAME=codec2_m4f
+PROJ_NAME=fmstick
 OUTPATH=build
-
-###################################################
-
-# Check for valid float argument
-# NOTE that you have to run make clan after
-# changing these as hardfloat and softfloat are not
-# binary compatible
-ifneq ($(FLOAT_TYPE), hard)
-ifneq ($(FLOAT_TYPE), soft)
-override FLOAT_TYPE = hard
-#override FLOAT_TYPE = soft
-endif
-endif
 
 ###################################################
 
@@ -43,15 +32,14 @@ endif
 BINPATH=~/sat/bin
 CC=$(BINPATH)/arm-none-eabi-gcc
 OBJCOPY=$(BINPATH)/arm-none-eabi-objcopy
+STRIP=$(BINPATH)/arm-none-eabi-strip
 SIZE=$(BINPATH)/arm-none-eabi-size
 FLASHPROG=$(BINPATH)/st-flash
 
 CFLAGS  = -std=gnu99 -g -O2 -Wall -Tstm32_flash.ld
 CFLAGS += -mlittle-endian -mthumb -mthumb-interwork -nostartfiles -mcpu=cortex-m3
-
 CFLAGS += -fno-strict-aliasing -ffunction-sections
 CFLAGS += -DARM_MATH_CM3 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -DUNALIGNED_SUPPORT_DISABLE
-
 CFLAGS += -msoft-float
 
 ###################################################
@@ -73,21 +61,17 @@ CFLAGS += -DHSE_VALUE=14745600
 
 # Library paths
 LIBPATHS = -Llib/StdPeriph
-LIBPATHS += -Llib/PDM_filter
-LIBPATHS += -Llib/DSP_Lib
-LIBPATHS += -Llib/Codec2_Lib
+LIBPATHS += -Llib/USB_Lib
 
 # Libraries to link
-LIBS = -lm -lstdperiph -lpdm_filter -larm_math -lcodec2m
+LIBS = -lm -lstdperiph -lusbdev
 
 # Extra includes
 CFLAGS += -Ilib/StdPeriph/inc
-CFLAGS += -Ilib/PDM_filter
-CFLAGS += -Ilib/DSP_Lib/inc
-CFLAGS += -Ilib/Codec2_Lib/inc
+CFLAGS += -Ilib/USB_Lib/inc
 
 # add startup file to build
-SRCS += lib/startup_stm32f4xx.S
+SRCS += lib/startup_stm32f10x_cl.S
 
 OBJS = $(SRCS:.c=.o)
 
@@ -99,14 +83,15 @@ all: lib proj
 	$(SIZE) $(OUTPATH)/$(PROJ_NAME).elf
 
 lib:
-	$(MAKE) -C lib FLOAT_TYPE=$(FLOAT_TYPE)
+	$(MAKE) -C lib
 
 proj: 	$(OUTPATH)/$(PROJ_NAME).elf
 
 $(OUTPATH)/$(PROJ_NAME).elf: $(SRCS)
-	mkdir $(OUTPATH)
+	mkdir -p $(OUTPATH)
 	$(CC) $(CFLAGS) $^ -o $@ $(LIBPATHS) $(LIBS)
-	$(OBJCOPY) -O ihex $(OUTPATH)/$(PROJ_NAME).elf $(OUTPATH)/$(PROJ_NAME).hex
+	$(STRIP) $(OUTPATH)/$(PROJ_NAME).elf
+	#$(OBJCOPY) -O ihex $(OUTPATH)/$(PROJ_NAME).elf $(OUTPATH)/$(PROJ_NAME).hex
 	$(OBJCOPY) -O binary $(OUTPATH)/$(PROJ_NAME).elf $(OUTPATH)/$(PROJ_NAME).bin
 
 clean:
@@ -118,4 +103,3 @@ clean:
 	
 flash: proj
 	$(FLASHPROG) write $(OUTPATH)/$(PROJ_NAME).bin 0x8000000
-

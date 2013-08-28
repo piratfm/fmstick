@@ -14,21 +14,18 @@ CFLAGS += -ffreestanding -nostdlib
 
 CFLAGS += -DSTM32F10X_CL
 CFLAGS += -DUSE_STDPERIPH_DRIVER
+CFLAGS += -DEXTERNAL_CRYSTAL_14_7456MHz
 CFLAGS += -DHSE_VALUE=14745600
 
 # Includes
-CFLAGS += -Iinc -I../Core/cmsis -I../Core/stm32
+CFLAGS += -Iinc -I../Core/cmsis -I../Core/stm32 -I../StdPeriph/inc -I../../inc
 
 # Sources
-SRCS =  misc.c stm32f10x_can.c stm32f10x_dac.c stm32f10x_exti.c \
-	stm32f10x_gpio.c stm32f10x_pwr.c stm32f10x_sdio.c stm32f10x_usart.c \
-	stm32f10x_adc.c stm32f10x_cec.c stm32f10x_dbgmcu.c stm32f10x_flash.c \
-	stm32f10x_i2c.c stm32f10x_rcc.c stm32f10x_spi.c stm32f10x_wwdg.c \
-	stm32f10x_bkp.c stm32f10x_crc.c stm32f10x_dma.c stm32f10x_fsmc.c \
-	stm32f10x_iwdg.c stm32f10x_rtc.c stm32f10x_tim.c
+SRCS =  otgd_fs_cal.c otgd_fs_dev.c otgd_fs_int.c otgd_fs_pcd.c \
+	usb_core.c usb_init.c usb_int.c usb_mem.c usb_regs.c usb_sil.c
 
 OBJS = $(SRCS:.c=.o)
-LIBNAME = libstdperiph.a
+LIBNAME = libusbdev.a
 
 all: $(LIBNAME)
 
