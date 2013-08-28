@@ -1,5 +1,4 @@
-
-This is Atollic TrueStudio project for STM32F107RC, soldered on STM32VL-Discovery board and changed quartz to 14.7456 MHz
+This is Makefile project for STM32F107RC, soldered on STM32VL-Discovery board and changed quartz to 14.7456 MHz
 
 The firmware is not yet supports controlling SI4711 by HID-interface (it's written only partially).
 Frontend init load sequence is located in Project/Audio_Streaming/src/audio_codec_si4711.c:92
